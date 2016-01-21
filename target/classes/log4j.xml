@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- Log4j 鎶婃棩蹇楄繘琛屽垎绾у垎寮�潵鎵撲互鍚庢柟渚胯繘琛屾棩蹇楁帓闄ら敊璇�-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- ===== [灞忓箷Appender] ===== -->
+	<appender name="console-log" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss SSS\} %-5p] %m%n" />
+		</layout>
+	</appender>
+	<appender name="file-log" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${pom.log.dir}ehaierSearcher/shoppingmall_search_web.log" />
+		<param name="append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss SSS} %-5p] %m%n" />
+		</layout>
+	</appender>
+	
+	 <!--搴旂敤鐨勬棩蹇�鎵撳叆syslog-ng -->
+	<appender name="syslogNG" class="org.apache.log4j.net.SyslogAppender">
+		<param name="SyslogHost" value="10.9.30.179:514" />
+		<param name="Facility" value="${pom.logng.facility}" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="shoppingmall-search-web [%d{MM-dd HH:mm:ss SSS} %-5p] %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="com.alibaba" additivity="false"> 
+		<level value="warn"></level>
+		<appender-ref ref="file-log"/>
+		<appender-ref ref="syslogNG"/>
+	</logger>
+	
+	<logger name="com.ehaier" additivity="false"> 
+		<level value="${pom.log.haier-level}"></level>
+		<appender-ref ref="${pom.log.haier-appender}"/>
+		<appender-ref ref="syslogNG"/>
+	</logger>
+
+    <logger name="java.sql" additivity="false">
+            <level value="DEBUG"></level>
+            <appender-ref ref="file-log"/>
+            <appender-ref ref="syslogNG"/>
+    </logger>
+    
+	
+	<appender name="searchboxLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${pom.log.dir}ehaierSearcher/searchbox/index" />
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout>
+	</appender>
+	<appender name="exactLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${pom.log.dir}ehaierSearcher/exactword/index" />
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 杈撳嚭鏃ュ織鍒版枃浠� 姣忓ぉ涓�釜鏂囦欢 -->  
+    <appender name="fuzzyLogger" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="${pom.log.dir}ehaierSearcher/fuzzyword/index"></param>  
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout> 
+    </appender>   
+
+	<!-- 杈撳嚭鏃ュ織鍒版枃浠� 姣忓ぉ涓�釜鏂囦欢 -->  
+    <appender name="noResultLogger" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="${pom.log.dir}ehaierSearcher/noresultword/index"></param>  
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout> 
+    </appender>  
+	
+	<logger name="fuzzyLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="fuzzyLogger" />
+	</logger>
+	<logger name="exactLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="exactLogger" />
+	</logger>
+	<logger name="searchboxLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="searchboxLogger" />
+	</logger>
+	<logger name="noResultLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="noResultLogger" />
+	</logger>
+	<!-- ========绉诲姩绔�=============================================================================================== -->
+	<appender name="MsearchboxLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${pom.log.dir}mobileSearcher/searchbox/index" />
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout>
+	</appender>
+	<appender name="MexactLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${pom.log.dir}mobileSearcher/exactword/index" />
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 杈撳嚭鏃ュ織鍒版枃浠� 姣忓ぉ涓�釜鏂囦欢 -->  
+    <appender name="MfuzzyLogger" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="${pom.log.dir}mobileSearcher/fuzzyword/index"></param>  
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout> 
+    </appender>   
+
+	<!-- 杈撳嚭鏃ュ織鍒版枃浠� 姣忓ぉ涓�釜鏂囦欢 -->  
+    <appender name="MnoResultLogger" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="${pom.log.dir}mobileSearcher/noresultword/index"></param>  
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout> 
+    </appender>
+    
+    <appender name="ExecuteTimer" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="${pom.log.dir}pcSearcher/executeTime/timerInterceptor"></param>  
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout> 
+    </appender>  
+    <logger name="ExecuteTimer" additivity="false">
+		<level value="info" />
+		<appender-ref ref="ExecuteTimer" />
+	</logger>
+	
+	<logger name="MfuzzyLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="MfuzzyLogger" />
+	</logger>
+	<logger name="MexactLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="MexactLogger" />
+	</logger>
+	<logger name="MsearchboxLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="MsearchboxLogger" />
+	</logger>
+	<logger name="MnoResultLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="MnoResultLogger" />
+	</logger>
+	<!-- ======================================================================================= -->
+ <appender name="searchKeyLogger" class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="${pom.log.dir}Searcher/key/index"></param>  
+		<param name="append" value="true" />
+		<param name="immediateFlush" value="true" />
+		<param name="encoding" value="utf-8" />
+		<param name="threshold" value="info" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.csv'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss},%m%n" />
+		</layout> 
+    </appender>  
+    <logger name="searchKeyLogger" additivity="false">
+		<level value="info" />
+		<appender-ref ref="searchKeyLogger" />
+	</logger>
+
+	<root>
+		<level value="${pom.log.root-level}" />
+		<appender-ref ref="${pom.log.root-appender}" />
+		<appender-ref ref="syslogNG" />
+	</root>
+</log4j:configuration>

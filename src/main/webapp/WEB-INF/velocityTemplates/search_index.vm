@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta content="all" name="robots" />
+<meta property="wb:webmaster" content="6ffdc657eef2403e" />
+<meta name="generator" content="PEC" />
+<title>鍟嗗搧鎼滅储 - 娴峰皵鍟嗗煄</title>
+<link rel="stylesheet" href="http://cdn09.ehaier.com/v3/css/search.css" type="text/css" media="all" />
+<script type="text/javascript">
+	var ehaier = ehaier||{};
+	ehaier.domainUrl = {
+		baseDomain:'http://${wwwHostAndPort}',
+    	searchDomain : 'http://$!{uriHostAndPort}'
+	}
+</script>
+</head>
+<body>
+    <!-- all-header-bar -->
+    <div class="all-header-bar">
+		<div class="wrapper" >
+			<div class="title-choose-city">鍒囨崲鍩庡競锛�/div><div class="user-city js-choose-city"></div> <a class="a-fav-ehaier js-addtofav" href="http://www.ehaier.com/" rel="nofollow">鏀惰棌娴峰皵鍟嗗煄</a><span class="s-weixin-box js-show-weixin"><a class="a-weixin-ehaier" href="http://www.ehaier.com/" rel="nofollow">寰俊</a><img class="img-weixin-qr" width="160" height="191" src="http://cdn09.ehaier.com/v3/images/blank.png" src3="http://cdn09.ehaier.com/v3/images/qrehaier.png" alt="娴峰皵鍟嗗煄寰俊浜岀淮鐮� /></span>
+			<p class="p-header-bar"><span class="js-login-info">鍡紝娆㈣繋鏉ュ埌娴峰皵瀹樻柟鍟嗗煄 璇�a href="http://www.ehaier.com/profile.php?a=login" rel="nofollow">鐧诲綍</a> &nbsp;|&nbsp; <a href="http://www.ehaier.com/profile.php?a=register" rel="nofollow">鍏嶈垂娉ㄥ唽</a></span> &nbsp;|<a class="a-header-bar" href="http://www.ehaier.com/member.php" rel="nofollow">鎴戠殑璐︽埛</a>|<a class="a-header-bar a-header-to-services"  rel="nofollow" href="http://www.ehaier.com/helpcenter.php">鏈嶅姟涓績</a>|<a class="a-header-bar a-header-to-haier" rel="nofollow" href="http://www.ehaier.com/"  target="_blank">娴峰皵瀹樼綉</a></p>
+		</div>
+	</div>
+
+    <!-- choose-city -->
+    <div class="so-popbox allcity-box">
+    	<div class="h2-sopop"><span class="s-title">閫夋嫨鍦板尯</span></div>
+    	<p class="city-letter-mark"><a class="letter-mark" href="#city_line_A">A</a><a class="letter-mark" href="#city_line_B">B</a><a class="letter-mark" href="#city_line_C">C</a><a class="letter-mark" href="#city_line_F">F</a><a class="letter-mark" href="#city_line_G">G</a><a class="letter-mark" href="#city_line_H">H</a><a class="letter-mark" href="#city_line_J">J</a><a class="letter-mark" href="#city_line_L">L</a><a class="letter-mark" href="#city_line_N">N</a><a class="letter-mark" href="#city_line_Q">Q</a><a class="letter-mark" href="#city_line_S">S</a><a class="letter-mark" href="#city_line_T">T</a><a class="letter-mark" href="#city_line_X">X</a><a class="letter-mark" href="#city_line_Y">Y</a><a class="letter-mark" href="#city_line_Z">Z</a></p>
+    	<div class="city-list"></div>
+    </div>
+
+    <!-- prolist-box begin -->
+    <div class="wrapper search-index-body">
+    	<h1 class="h1-logo"><img src="http://cdn09.ehaier.com/v3/images/search/logo-slogan.png" width="271" height="82" alt="娴峰皵鍟嗗煄 涔板鐢�澶熺渷蹇� /></h1>
+    	<div class="search-index-box">
+    		<div class="all-search search-index-txt">
+				<form class="hotsearch" method="get" action="/s">
+					#if($!defaultWord)
+						#set($newDefaultWord = $!defaultWord)
+					#else
+						#set($newDefaultWord ="褰╃數")
+					#end
+    				<input type="text" class="txt txt-search" autocomplete="off" maxlength="50" name="k" value="$!newDefaultWord" />
+    				<input type="submit" class="btn-search" value="鎼滅储" />
+    			</form>
+			</div>
+    	</div>
+    </div>
+
+
+    <!-- footer -->
+    <div class="search-index-footer">
+    		<p class="p-footerlinks"><a href="http://www.ehaier.com/" target="_blank">娴峰皵鍟嗗煄棣栭〉</a> | <a href="http://www.ehaier.com/helpcenter.php?id=25" target="_blank" rel="nofollow">璐墿娴佺▼</a> | <a href="http://www.ehaier.com/helpcenter.php?id=33" target="_blank" rel="nofollow">閰嶉�鏂瑰紡</a> | <a href="http://www.ehaier.com/helpcenter.php?id=30" target="_blank" rel="nofollow">浠樻鏂瑰紡</a> | <a href="http://www.ehaier.com/helpcenter.php?id=35" target="_blank" rel="nofollow">鍞悗鏈嶅姟</a> | <a class="a-openKF" href="#" rel="nofollow">鎶曡瘔寤鸿</a> | <a href="http://www.ehaier.com/links/friendssite.html" target="_blank">鍙嬫儏閾炬帴</a> | <a href="http://zhishi.ehaier.com/" target="_blank">娴峰皵鐭ヨ瘑鍫�/a></p>
+    		<p class="p-icp">缃戠珯澶囨/璁稿彲璇佸彿锛�a target="_blank" href="http://www.beianchaxun.net/beianxinxi/788ee077-7855-43bb-b03c-1244f1738393.html" rel="nofollow">椴両CP澶�9096283鍙�/a></p>
+    		<p class="p-copyright">Copyright&copy;2000-2013 娴峰皵闆嗗洟鐢靛瓙鍟嗗姟鏈夐檺鍏徃 All Rights Reserved</p>
+    </div>
+    <script type="text/javascript" src="http://cdn09.ehaier.com/v3/js/jquery-1.8.2.min.js">//user scripts</script>
+    <script type="text/javascript" src="http://cdn09.ehaier.com/v3/js/base.js">//user scripts</script>
+    <script type="text/javascript" src="http://cdn09.ehaier.com/v3/js/search.js">//user scripts</script>
+	#if($!serverIp.size()>0)
+		#foreach($ip in $!serverIp)
+			<!--$!{ip}-->
+		#end
+	#end
+</body>
+</html>

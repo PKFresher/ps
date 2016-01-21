@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<tools>
+	<toolbox scope="application">
+		<tool class="com.ehaier.shoppingmall.search.utils.VelocityUtil" key="utils" />
+	</toolbox>
+	<data type="String" key="uriHostAndPort" value="${pom.uri-host-and-port}" />
+	<data type="String" key="wwwHostAndPort" value="${pom.www-ehaier-host}" />
+	<data type="String" key="cdnHostAndPort" value="${pom.cdn.domain}" />
+	<data type="String" key="baseHostAndPort" value="${pom.baseurl.domain}" />
+	<data type="String" key="staticHost" value="${pom.static-host}" />
+	<data type="String" key="domain" value="${pom.domain}" />
+	
+</tools>

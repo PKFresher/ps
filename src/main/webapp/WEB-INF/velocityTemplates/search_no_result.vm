@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+    <meta name="generator" content="PEC" />
+    <title>鍟嗗搧鎼滅储 - 鏃ユ棩椤哄晢鍩�/title>
+   
+	<script type="text/javascript">
+    	var ehaier = ehaier||{};
+        ehaier.domainUrl = {
+			baseDomain:'http://${wwwHostAndPort}',
+        	searchDomain : 'http://$!{uriHostAndPort}',
+			encodeWord: '$!{encodeWord}',
+			word:'$!{decodeword}',
+			cityId: '$!{region.cityId}',
+			cityName: '$!{region.cityName}',
+			sortStr:'$!{sortStr}',
+			hasResult:0
+        }	
+    </script>
+    <link rel="stylesheet" href=http://$!{uriHostAndPort}/css/list.css>
+</head>
+ <body> 
+	<!--澶撮儴寮�-->
+		$!headerHtml
+	<!--澶撮儴缁撴潫-->
+    <!-- prolist-box begin -->
+    <div class="noresult-box">
+    	<div class="noresult-tip">
+    		<p class="p-noresult-tip">
+				#if($!{decodeword})
+    				#if($!decodeword.length()>20)
+    					#set($newword = $!decodeword.substring(0,20)+"...")
+    				#else
+    					#set($newword = $!decodeword)
+					#end
+				#end
+        		 <!--鏃犺揣 鐘舵�-->
+        		<div class="spc-not-product">
+		            <div class="none_product">
+		                <img src="http://$!{staticHost}/images/feixia.png">鎶辨瓑锛屾病鏈夋壘鍒版偍鎯宠鐨勫晢鍝侊紝璇烽噸鏂版悳绱紒
+		            </div>
+	            </div>
+	            <style>
+	            .spc-not-product {width: 1190px; margin: 50px auto;}
+	            </style>
+			</p>
+    		<p class="p-recom-tip"></p>
+    	</div>
+    	<div class="greybg clearfix" style="display:none;">
+    		<div class="all-search search-sub"><span class="s-search-title">閲嶆柊鎼滅储锛�/span>
+    			<form class="hotsearch" method="get" action="/s"><input type="text" class="txt txt-search" autocomplete="off" maxlength="50" name="k" value="$!{decodeword}" /><input type="submit" class="btn-search" value="鎼滅储" /></form>
+    		</div>
+    	</div>
+    	<div class="search-recom-box">
+    		<div class="recom-w"></div>
+    		<div class="recom-e"></div>
+    	</div>
+    </div>
+    <!-- prolist-box end -->
+	
+	<script type="text/javascript">
+    	window["_BFD"] = window["_BFD"] || {};
+    	_BFD.BFD_INFO = {
+    		"search_word" : ehaier.domainUrl.word,   //鎼滅储璇�    		"search_result" : ehaier.domainUrl.hasResult,   //鎼滅储鏈夋棤缁撴灉锛�琛ㄧず鏈夌粨鏋滐紝0琛ㄧず鏃犵粨鏋�    		"city" : ehaier.domainUrl.cityName,
+    		"page_type" : "new_search" //褰撳墠椤甸潰鍏ㄧО锛岃鍕夸慨鏀�    	};
+    </script>
+ <!--澶撮儴寮�-->
+		$!footerHtml
+	<!--澶撮儴缁撴潫-->
+	#if($!serverIp.size()>0)
+		#foreach($ip in $!serverIp)
+			<!--$!{ip}-->
+		#end
+	#end
+ </body>
+</html>

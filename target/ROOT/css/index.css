@@ -1,0 +1,28 @@
+html,
+body {
+	height: 100%;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+a:hover {
+	color: #c7003a;
+	text-decoration: underline;
+}
+
+.header-bar {
+	height: 30px;
+	line-height: 30px;
+	background: #f6f6f6;
+	color: #666;
+}

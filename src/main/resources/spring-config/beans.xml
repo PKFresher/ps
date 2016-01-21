@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	 xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
+	
+	<!-- 1.包扫描 dao,service -->
+    <context:component-scan base-package="com.qzbuniform.web" />
+    <context:annotation-config />
+        <!-- 模板引入-->
+    <import resource="volicityConfig.xml"/>
+
+    <!-- 2.数据库链接配置文件jdbc.properties --> <!-- 整合mybatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*Mapper.xml"/>
+    </bean>
+
+	<!-- 3.数据源dataSource -->
+	<context:property-placeholder location="classpath:properties/jdbc.properties"/>
+    <!-- 4.工程SqlSessionFactory -->
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="defaultAutoCommit" value="true" />
+        <property name="initialSize" value="5" />
+        <property name="minIdle" value="5" />
+        <property name="maxIdle" value="15" />
+        <property name="maxActive" value="500" />
+        <property name="maxWait" value="2000" />
+        <property name="testOnBorrow" value="true" />
+        <property name="validationQuery" value="/* ping */ select 1" />
+        <property name="validationInterval" value="30000" />
+        <property name="testWhileIdle" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+    </bean>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="view*" read-only="true"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
+</beans>
