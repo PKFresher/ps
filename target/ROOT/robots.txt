@@ -1,6 +1,0 @@
-User-agent: *
-Disallow:/*utm_source=*
-User-agent: EtaoSpider
-Disallow:/
-User-agent: YRSpider
-Disallow: /
