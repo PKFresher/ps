@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Generate by autoSQLMap Powered by 航子哥哥 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AppModelDAO">
+
+    <resultMap id="resultAppModelDOMap" type="com.qzbuniform.web.dal.dataobject.AppModelDO">
+        <result property="id" column="ID"/>
+        <result property="app" column="APP"/>
+        <result property="model" column="MODEL"/>
+    </resultMap>
+
+    <sql id="allCols">
+                 `ID`
+                ,`APP`
+                ,`MODEL`
+    </sql>
+
+   
+    <insert id="insert" parameterType="AppModelDO">
+        
+	    INSERT INTO `app_model`(
+	    
+        <include refid="allCols"/>
+        
+        )VALUES(
+                 #{id}
+                ,#{app}
+                ,#{model}
+        );
+        
+    </insert>
+
+    <!--
+           开发负责人：haha
+           功能说明：更新单条数据
+           前台或后台：后台
+          
+    -->
+    <update id="update" parameterType="AppModelDO">
+        
+        UPDATE `app_model` SET `ID` = #id;
+        
+        
+            <if test="app!=null">
+                ,`APP` = #{app}
+            </if>
+            <if test="model!=null">
+                ,`MODEL` = #{model}
+            </if>
+        
+        
+        WHERE `ID` = #id;
+    	
+    </update>
+
+    <!--
+           开发负责人：haha
+           功能说明：查询单条数据
+           前台或后台：后台
+         
+        -->
+    <select id="select" resultMap="resultAppModelDOMap">
+        
+        SELECT
+        
+        <include refid="allCols"/>
+        
+        FROM `app_model` WHERE `ID` = #id;
+        
+    </select>
+
+    <!--
+           开发负责人：haha
+           功能说明：查询多条数据
+           前台或后台：后台
+           频率：每天1000以下
+    -->
+    <select id="find" resultMap="resultAppModelDOMap">
+        
+        SELECT
+        
+        <include refid="allCols"/>
+        
+        FROM `app_model` WHERE  1
+        
+            <if test="app!=null">
+               AND `APP` = #{app}
+            </if>
+            <if test="model!=null">
+               AND `MODEL` = #{model}
+            </if>
+        
+        ORDER BY `ID` DESC
+        LIMIT #z{from},#{to};
+        
+
+    </select>
+
+    <!--
+           开发负责人：haha
+           功能说明：查询条数
+    -->
+    <select id="queryCount" resultType="java.lang.Integer">
+        
+        SELECT
+        COUNT(*)
+        FROM `app_model` WHERE  1
+        
+            <if test="id!=null">
+             AND   `ID` = #{id}
+            </if>
+            <if test="app!=null">
+             AND   `APP` = #{app}
+            </if>
+            <if test="model!=null">
+             AND   `MODEL` = #{model}
+            </if>
+    </select>
+
+    <!--
+           开发负责人：haha
+           功能说明：物理删除单条数据
+           前台或后台：后台
+           频率：每天100以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+    -->
+    <update id="delete">
+        UPDATE `app_model` SET `{DELETE_KEY}` = '1' WHERE `ID` = #{id};
+    </update>
+
+</mapper>
