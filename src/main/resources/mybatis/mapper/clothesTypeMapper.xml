@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Generate by autoSQLMap Powered by 航子哥哥 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="clothesTypeMapper">
+
+   <!-- <resultMap id="resultClothesTypeMap" type="com.qzbuniform.web.pojo.ClothesType">
+        <result property="id" column="ID"/>
+        <result property="size" column="SIZE"/>
+        <result property="sleaveLength" column="SLEAVE_LENGTH"/>
+        <result property="shoulderWidth" column="SHOULDER_WIDTH"/>
+        <result property="bust" column="BUST"/>
+        <result property="centerOfBack" column="CENTER_OF_BACK"/>
+        <result property="weigth" column="WEIGTH"/>
+        <result property="sexType" column="SEX_TYPE"/>
+        <result property="categoryId" column="CATEGORY_ID"/>
+        <result property="categoryName" column="CATEGORY_NAME"/>
+    </resultMap>  -->
+
+    <sql id="allCols">
+                 `ID`
+                ,`SIZE`
+                ,`SLEAVE_LENGTH`
+                ,`SHOULDER_WIDTH`
+                ,`BUST`
+                ,`CENTER_OF_BACK`
+                ,`WEIGTH`
+                ,`SEX_TYPE`
+                ,`CATEGORY_ID`
+                ,`CATEGORY_NAME`
+    </sql>
+
+   
+    <insert id="insert" parameterType="ClothesType">
+        
+	    INSERT INTO `clothes_type`(
+	    
+        <include refid="allCols"/>
+        
+        )VALUES(
+                 #{id}
+                ,#{size}
+                ,#{sleaveLength}
+                ,#{shoulderWidth}
+                ,#{bust}
+                ,#{centerOfBack}
+                ,#{weigth}
+                ,#{sexType}
+                ,#{categoryId}
+                ,#{categoryName}
+        );
+        
+    </insert>
+
+    <!--
+           开发负责人：duxing //change at Setting Tab
+           功能说明：更新单条数据
+           前台或后台：后台
+          
+    -->
+    <update id="update" parameterType="ClothesType">
+        
+        UPDATE `clothes_type` SET `ID` = #{id};
+        
+        
+            <if test="size!=null">
+                ,`SIZE` = #{size}
+            </if>
+            <if test="sleaveLength!=null">
+                ,`SLEAVE_LENGTH` = #{sleaveLength}
+            </if>
+            <if test="shoulderWidth!=null">
+                ,`SHOULDER_WIDTH` = #{shoulderWidth}
+            </if>
+            <if test="bust!=null">
+                ,`BUST` = #{bust}
+            </if>
+            <if test="centerOfBack!=null">
+                ,`CENTER_OF_BACK` = #{centerOfBack}
+            </if>
+            <if test="weigth!=null">
+                ,`WEIGTH` = #{weigth}
+            </if>
+            <if test="sexType!=null">
+                ,`SEX_TYPE` = #{sexType}
+            </if>
+            <if test="categoryId!=null">
+                ,`CATEGORY_ID` = #{categoryId}
+            </if>
+            <if test="categoryName!=null">
+                ,`CATEGORY_NAME` = #{categoryName}
+            </if>
+        
+        
+        WHERE `ID` = #{id};
+    	
+    </update>
+
+    <!--
+           开发负责人：duxing //change at Setting Tab
+           功能说明：查询单条数据
+           前台或后台：后台
+         
+        -->
+    <select id="get" resultType="clothesType">
+        
+        SELECT
+        
+        <include refid="allCols"/>
+        
+        FROM `clothes_type` WHERE `ID` = #{id};
+        
+    </select>
+
+    <!--
+           开发负责人：duxing //change at Setting Tab
+           功能说明：查询多条数据
+           前台或后台：后台
+           频率：每天1000以下
+    -->
+    <select id="find" resultMap="resultClothesTypeMap">
+        
+        SELECT
+        
+        <include refid="allCols"/>
+        
+        FROM `clothes_type` WHERE  1
+        
+            <if test="size!=null">
+                AND `SIZE` = #{size}
+            </if>
+            <if test="sleaveLength!=null">
+                AND `SLEAVE_LENGTH` = #{sleaveLength}
+            </if>
+            <if test="shoulderWidth!=null">
+                AND `SHOULDER_WIDTH` = #{shoulderWidth}
+            </if>
+            <if test="bust!=null">
+                AND `BUST` = #{bust}
+            </if>
+            <if test="centerOfBack!=null">
+                AND `CENTER_OF_BACK` = #{centerOfBack}
+            </if>
+            <if test="weigth!=null">
+                AND `WEIGTH` = #{weigth}
+            </if>
+            <if test="sexType!=null">
+                AND `SEX_TYPE` = #{sexType}
+            </if>
+            <if test="categoryId!=null">
+                AND `CATEGORY_ID` = #{categoryId}
+            </if>
+            <if test="categoryName!=null">
+                AND `CATEGORY_NAME` = #{categoryName}
+            </if>
+        
+        ORDER BY `ID` DESC
+        LIMIT #{from},#{size};
+        
+
+    </select>
+
+    <!--
+           开发负责人：duxing //change at Setting Tab
+           功能说明：查询条数
+    -->
+    <select id="queryCount" resultType="java.lang.Integer">
+        
+        SELECT
+        COUNT(*)
+        FROM `clothes_type` WHERE  1
+        
+            <if test="id!=null">
+             AND   `ID` = #{id}
+            </if>
+            <if test="size!=null">
+             AND   `SIZE` = #{size}
+            </if>
+            <if test="sleaveLength!=null">
+             AND   `SLEAVE_LENGTH` = #{sleaveLength}
+            </if>
+            <if test="shoulderWidth!=null">
+             AND   `SHOULDER_WIDTH` = #{shoulderWidth}
+            </if>
+            <if test="bust!=null">
+             AND   `BUST` = #{bust}
+            </if>
+            <if test="centerOfBack!=null">
+             AND   `CENTER_OF_BACK` = #{centerOfBack}
+            </if>
+            <if test="weigth!=null">
+             AND   `WEIGTH` = #{weigth}
+            </if>
+            <if test="sexType!=null">
+             AND   `SEX_TYPE` = #{sexType}
+            </if>
+            <if test="categoryId!=null">
+             AND   `CATEGORY_ID` = #{categoryId}
+            </if>
+            <if test="categoryName!=null">
+             AND   `CATEGORY_NAME` = #{categoryName}
+            </if>
+    </select>
+
+    <!--
+           开发负责人：duxing //change at Setting Tab
+           功能说明：物理删除单条数据
+           前台或后台：后台
+           频率：每天100以下
+           表大小：10W
+           分表数量：无
+           是否有缓存：无
+    -->
+    <update id="delete">
+        UPDATE `clothes_type` SET `{DELETE_KEY}` = '1' WHERE `ID` = #{id};
+    </update>
+
+</mapper>

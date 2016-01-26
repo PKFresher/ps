@@ -153,4 +153,19 @@ public class ClothesType  implements  Serializable{
         this.categoryName = categoryName;
     }
 
+    @Override
+    public String toString() {
+        return "ClothesType{" +
+                "id=" + id +
+                ", size='" + size + '\'' +
+                ", sleaveLength=" + sleaveLength +
+                ", shoulderWidth=" + shoulderWidth +
+                ", bust=" + bust +
+                ", centerOfBack=" + centerOfBack +
+                ", weigth=" + weigth +
+                ", sexType=" + sexType +
+                ", categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                '}';
+    }
 }

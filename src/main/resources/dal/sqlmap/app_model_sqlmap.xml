@@ -24,38 +24,38 @@
         <include refid="allCols"/>
         
         )VALUES(
-                 #{id}
-                ,#{app}
-                ,#{model}
+                 #hangzi{idhangzi}
+                ,#hangzi{apphangzi}
+                ,#hangzi{modelhangzi}
         );
         
     </insert>
 
     <!--
-           开发负责人：haha
+           开发负责人：duxing //change at Setting Tab
            功能说明：更新单条数据
            前台或后台：后台
           
     -->
     <update id="update" parameterType="AppModelDO">
         
-        UPDATE `app_model` SET `ID` = #id;
+        UPDATE `app_model` SET `ID` = #hangzi{idhangzi};
         
         
             <if test="app!=null">
-                ,`APP` = #{app}
+                ,`APP` = #hangzi{apphangzi}
             </if>
             <if test="model!=null">
-                ,`MODEL` = #{model}
+                ,`MODEL` = #hangzi{modelhangzi}
             </if>
         
         
-        WHERE `ID` = #id;
+        WHERE `ID` = #hangzi{idhangzi};
     	
     </update>
 
     <!--
-           开发负责人：haha
+           开发负责人：duxing //change at Setting Tab
            功能说明：查询单条数据
            前台或后台：后台
          
@@ -66,12 +66,12 @@
         
         <include refid="allCols"/>
         
-        FROM `app_model` WHERE `ID` = #id;
+        FROM `app_model` WHERE `ID` = #hangzi{idhangzi};
         
     </select>
 
     <!--
-           开发负责人：haha
+           开发负责人：duxing //change at Setting Tab
            功能说明：查询多条数据
            前台或后台：后台
            频率：每天1000以下
@@ -85,20 +85,20 @@
         FROM `app_model` WHERE  1
         
             <if test="app!=null">
-               AND `APP` = #{app}
+                AND `APP` = #hangzi{apphangzi}
             </if>
             <if test="model!=null">
-               AND `MODEL` = #{model}
+                AND `MODEL` = #hangzi{modelhangzi}
             </if>
         
         ORDER BY `ID` DESC
-        LIMIT #z{from},#{to};
+        LIMIT #hangzi{from},#hangzi{size};
         
 
     </select>
 
     <!--
-           开发负责人：haha
+           开发负责人：duxing //change at Setting Tab
            功能说明：查询条数
     -->
     <select id="queryCount" resultType="java.lang.Integer">
@@ -108,18 +108,18 @@
         FROM `app_model` WHERE  1
         
             <if test="id!=null">
-             AND   `ID` = #{id}
+             AND   `ID` = #hangzi{idhangzi}
             </if>
             <if test="app!=null">
-             AND   `APP` = #{app}
+             AND   `APP` = #hangzi{apphangzi}
             </if>
             <if test="model!=null">
-             AND   `MODEL` = #{model}
+             AND   `MODEL` = #hangzi{modelhangzi}
             </if>
     </select>
 
     <!--
-           开发负责人：haha
+           开发负责人：duxing //change at Setting Tab
            功能说明：物理删除单条数据
            前台或后台：后台
            频率：每天100以下
@@ -128,7 +128,7 @@
            是否有缓存：无
     -->
     <update id="delete">
-        UPDATE `app_model` SET `{DELETE_KEY}` = '1' WHERE `ID` = #{id};
+        UPDATE `app_model` SET `{DELETE_KEY}` = '1' WHERE `ID` = #hangzi{idhangzi};
     </update>
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.qzbuniform.web.dao.impl;
 
+import com.qzbuniform.web.pojo.ClothesType;
 import com.sun.xml.internal.fastinfoset.vocab.ParserVocabulary;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * Created by pengs01 on 2016/1/25.
  */
 @Component
-public class ClothesTypeDAO extends BaseDaoImpl {
+public class ClothesTypeDAO extends BaseDaoImpl<ClothesType> {
 
     public  ClothesTypeDAO(){
 
